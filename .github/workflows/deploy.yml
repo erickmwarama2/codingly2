@@ -33,8 +33,6 @@ jobs:
       - name: Set serverless config
         run: serverless config credentials --key ${{ secrets.CODINGLY_ACCESS_KEY_ID }} --secret ${{ secrets.CODINGLY_ACCESS_SECRET }} --provider aws --overwrite
       - name: Install plugins
-        run: cd auction-service && npm i
-      - name: run audit fix
-        run: cd auction-service && npm audit fix --force
+        run: cd ~/auction-service && serverless plugin install -n serverless-bundle
       - name: Run serverless deploy auction service
         run: cd auction-service && serverless deploy --verbose
