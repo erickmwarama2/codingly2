@@ -38,7 +38,5 @@ jobs:
         run: serverless config credentials --key ${{ secrets.CODINGLY_ACCESS_KEY_ID }} --secret ${{ secrets.CODINGLY_ACCESS_SECRET }} --provider aws --overwrite
       - name: Install plugins
         run: cd auction-service && npm i
-      - name: set node options
-        run: export NODE_OPTIONS=--openssl-legacy-provider
       - name: Run serverless deploy auction service
-        run: cd auction-service && NODE_OPTIONS=--openssl-legacy-provider serverless deploy --verbose
+        run: cd auction-service && serverless deploy --verbose
