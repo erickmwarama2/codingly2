@@ -30,7 +30,7 @@ jobs:
         run: sudo apt update && sudo apt install npm
       - name: Install serverless
         run: npm install -g serverless
-      - name: Run a one-line script
+      - name: Set serverless config
         run: serverless config credentials --key ${{ secrets.CODINGLY_ACCESS_KEY_ID }} --secret ${{ secrets.CODINGLY_ACCESS_SECRET }} --provider aws --overwrite
       - name: Run serverless deploy auction service
-        run: cd auction-service && serverless deploy --verbose
+        run: cd auction-service && npm i && serverless deploy --verbose
